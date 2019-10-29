@@ -12,12 +12,13 @@ class CheckSuite(unittest.TestCase):
                     ,
                     FuncDecl(Id("foo"),[VarDecl("e",FloatType()),VarDecl("f",IntType())],
                         FloatType(),Block([
-                            Id('k')
+                            Id('d'),
+                            VarDecl("e",IntType())
                         ])),
                     VarDecl("b",IntType()),
                     VarDecl("c",FloatType())
                     ])
-        expect = "['a', 'd', 'foo', ['a', 'c'], 'b', 'c']"
+        expect = "Redeclared Variable: e"
         self.assertTrue(TestChecker.test(input,expect,400))
     #401
     def test_redeclared_function_StringType(self):
